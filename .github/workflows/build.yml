@@ -1,0 +1,29 @@
+name: Build Up!
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        run: bash build.sh
+
+      - name: Verify app bundle
+        run: |
+          test -f "build/Up!.app/Contents/MacOS/Up"
+          test -f "build/Up!.app/Contents/Resources/AppIcon.icns"
+          test -f "build/Up!.app/Contents/Info.plist"
+          file "build/Up!.app/Contents/MacOS/Up"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Up!.app
+          path: build/Up!.app
