@@ -3,6 +3,7 @@ set -e
 
 APP_NAME="Up!"
 EXECUTABLE_NAME="Up"
+MARKETING_VERSION="${MARKETING_VERSION:-1.0.0}"
 BUILD_DIR="build"
 APP_BUNDLE="$BUILD_DIR/$APP_NAME.app"
 CONTENTS="$APP_BUNDLE/Contents"
@@ -55,9 +56,9 @@ cat > "$CONTENTS/Info.plist" << PLIST
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>
-    <string>1.0</string>
+    <string>$MARKETING_VERSION</string>
     <key>CFBundleVersion</key>
-    <string>1</string>
+    <string>$MARKETING_VERSION</string>
     <key>LSMinimumSystemVersion</key>
     <string>13.0</string>
     <key>LSUIElement</key>
